@@ -1,1 +1,6 @@
-# Anomaly-Detection-
+Anomaly Detection: CNN Baseline vs PatchCore vs PaDiM
+This repo implements and compares three anomaly detection methods on the MVTec AD dataset (downloaded from the official site), using 8 categories out of 15 due to computational constraints. As a baseline, a Convolutional Neural Network (CNN) classifier was trained directly on image data to learn representations and classify anomalies. While straightforward, the CNN baseline struggles with generalization and fails to localize fine-grained defects.
+
+To improve robustness, PatchCore was implemented. It extracts patch-level embeddings from pre-trained backbones, stores them in a memory bank, and uses FAISS for efficient nearest-neighbor search. This allows high-quality anomaly detection and localization, balancing accuracy with scalability. In parallel, PaDiM was tested, which models pre-trained features as multivariate Gaussian distributions and applies Mahalanobis distance for probabilistic anomaly scoring.
+
+Evaluation used AUC, Precision, Recall, and F1-score. Results showed that while CNN provided a learning-based baseline and PaDiM offered statistically grounded detection, PatchCore consistently achieved the highest AUC and F1. Its ability to capture fine-grained anomalies and leverage FAISS acceleration made it the most effective approach among the tested methods for industrial defect detection.
